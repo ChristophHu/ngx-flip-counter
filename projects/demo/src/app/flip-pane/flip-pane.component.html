@@ -1,6 +1,6 @@
 <!-- <div class="flip-pane"> -->
     <div id="flipclock" class="flip-pane flip-pane-2 flip-shadow">
-        <ul class="flip-second h-full w-full relative float-left">
+        <ul class="flip-second h-full w-full relative float-left" #name>
             <li class="before absolute top-0 left-0 h-full w-full z-20">
                 <span class="block h-full perspective-[750px]">
                     <div class="flip-up absolute inset-0 bottom-[50%] h-[50%] z-10 overflow-hidden">
@@ -23,4 +23,19 @@
             </li>
         </ul>
     </div>
+    <button class="p-2 rounded text-white cursor-pointer" (click)="startTimer()">
+        <div class="h-5 w-5 stroke-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v5l2 2" /><path d="M17 22l5 -3l-5 -3z" /><path d="M13.017 20.943a9 9 0 1 1 7.831 -7.292" /></svg>
+        </div>
+    </button>
+    <button class="p-2 rounded text-white cursor-pointer" (click)="pauseTimer()">
+        <div class="h-5 w-5 stroke-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20.942 13.018a9 9 0 1 0 -7.909 7.922" /><path d="M12 7v5l2 2" /><path d="M17 17v5" /><path d="M21 17v5" /></svg>
+        </div>
+    </button>
+    <button class="p-2 rounded text-white cursor-pointer" (click)="stopTimer()">
+        <div class="h-5 w-5 stroke-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 0 -9 9" /><path d="M12 7v5l1 1" /><path d="M16 16h6v6h-6z" /></svg>
+        </div>
+    </button>
 <!-- </div> -->
