@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common'
+import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core'
 
 @Component({
   selector: 'flip-pane',
@@ -47,30 +47,30 @@ export class FlipPaneComponent implements OnInit, OnDestroy {
     }, 1000)
   }
   pauseTimer(): void {
-    if (!this.isRunning) return;
+    if (!this.isRunning) return
 
-    clearInterval(this.timerId);
-    this.timerId = null;
-    this.isRunning = false;
+    clearInterval(this.timerId)
+    this.timerId = null
+    this.isRunning = false
   }
   stopTimer(): void {
-    this.pauseTimer();
-    this.counter = 0;
-    this.process(this.counter);
+    this.pauseTimer()
+    this.counter = 0
+    this.process(this.counter)
   }
 
   // counter controls
   addOne(): void {
-    this.counter++;
-    this.process(this.counter);
+    this.counter++
+    this.process(this.counter)
   }
   subOne(): void {
-    this.counter--;
-    this.process(this.counter);
+    this.counter--
+    this.process(this.counter)
   }
   resetCounter(): void {
-    this.counter = 0;
-    this.process(this.counter);
+    this.counter = 0
+    this.process(this.counter)
   }
 
   process(value: number): void {
