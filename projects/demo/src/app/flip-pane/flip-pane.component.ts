@@ -15,10 +15,11 @@ export class FlipPaneComponent implements OnInit, OnDestroy {
   @Input() lineHeight: string = '164px'
 
   curr = 0
-  counter = 0
+  counter = 10
   timerId: any
 
   isRunning = true
+  isCountdown = true
 
   ngOnInit(): void {
     this.startTimer()
@@ -36,7 +37,12 @@ export class FlipPaneComponent implements OnInit, OnDestroy {
   startTimer(): void {
     this.isRunning = true
     this.timerId = setInterval(() => {
-      this.counter++
+      this.isCountdown ? this.counter-- : this.counter++
+      if (this.counter == 0) {
+        this.counter = 0
+        this.isRunning = false
+        clearInterval(this.timerId)
+      }
       this.process(this.counter)
     }, 1000)
   }
