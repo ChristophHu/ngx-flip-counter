@@ -32,6 +32,7 @@ export class FlipPaneComponent implements OnInit, OnDestroy {
     clearInterval(this.timerId)
   }
 
+  // timer controls
   startTimer(): void {
     this.isRunning = true
     this.timerId = setInterval(() => {
@@ -39,7 +40,6 @@ export class FlipPaneComponent implements OnInit, OnDestroy {
       this.process(this.counter)
     }, 1000)
   }
-
   pauseTimer(): void {
     if (!this.isRunning) return;
 
@@ -47,9 +47,22 @@ export class FlipPaneComponent implements OnInit, OnDestroy {
     this.timerId = null;
     this.isRunning = false;
   }
-
   stopTimer(): void {
     this.pauseTimer();
+    this.counter = 0;
+    this.process(this.counter);
+  }
+
+  // counter controls
+  addOne(): void {
+    this.counter++;
+    this.process(this.counter);
+  }
+  subOne(): void {
+    this.counter--;
+    this.process(this.counter);
+  }
+  resetCounter(): void {
     this.counter = 0;
     this.process(this.counter);
   }
