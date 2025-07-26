@@ -4,7 +4,7 @@ import { Injectable, OnDestroy } from '@angular/core';
   providedIn: 'root'
 })
 export class FlipService implements OnDestroy {
-curr = 0
+  curr = 0
   counter = 10
   timerId: any
 
@@ -56,7 +56,7 @@ curr = 0
   }
 
   process(value: number): void {
-    const ul = this.flipListRef.nativeElement as HTMLElement;
+    const ul = this.flipRef.nativeElement as HTMLElement;
     const lis = ul.querySelectorAll('li')
 
     if (lis.length !== 2) return

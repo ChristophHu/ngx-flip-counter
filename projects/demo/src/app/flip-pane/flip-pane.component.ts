@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common'
-import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core'
+import { Component, Input } from '@angular/core'
 
 @Component({
   selector: 'flip-pane',
@@ -9,10 +9,7 @@ import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@ang
   templateUrl: './flip-pane.component.html',
   styleUrl: './flip-pane.component.sass'
 })
-export class FlipPaneComponent implements OnInit, OnDestroy {
-  @ViewChild('name') flipListRef!: ElementRef
+export class FlipPaneComponent {
   @Input() textSize: string = '150px'
   @Input() lineHeight: string = '164px'
-
-  
 }
