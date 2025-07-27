@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common'
-import { Component, Input } from '@angular/core'
+import { Component, Input, ViewChild, ElementRef, AfterViewInit } from '@angular/core'
+import { FlipService } from '../flip.service'
 
 @Component({
   selector: 'flip-pane',
@@ -9,7 +10,15 @@ import { Component, Input } from '@angular/core'
   templateUrl: './flip-pane.component.html',
   styleUrl: './flip-pane.component.sass'
 })
-export class FlipPaneComponent {
+export class FlipPaneComponent implements AfterViewInit {
   @Input() textSize: string = '150px'
   @Input() lineHeight: string = '164px'
+  
+  @ViewChild('flipElement', { static: false }) flipElement!: ElementRef
+
+  constructor(private flipService: FlipService) {}
+
+  ngAfterViewInit(): void {
+    this.flipService.setFlipReference(this.flipElement)
+  }
 }

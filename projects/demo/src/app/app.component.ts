@@ -1,6 +1,6 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { FlipPaneComponent } from './flip-pane/flip-pane.component';
-import { FlipService } from './flip.service';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core'
+import { FlipPaneComponent } from './flip-pane/flip-pane.component'
+import { FlipService } from './flip.service'
 
 @Component({
   selector: 'app-root',
@@ -13,6 +13,15 @@ import { FlipService } from './flip.service';
     FlipService
   ]
 })
-export class AppComponent {
-    @ViewChild('name') flipRef!: ElementRef
+export class AppComponent implements AfterViewInit {
+  @ViewChild('name') flipRef!: ElementRef
+
+  constructor(private flipService: FlipService) {
+      // Set the component reference in the service
+      this.flipService.setFlipReference(this.flipRef)
+  }
+
+  ngAfterViewInit(): void {
+    this.flipService.startTimer()
+  }
 }

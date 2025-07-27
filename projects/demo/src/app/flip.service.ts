@@ -1,4 +1,4 @@
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable, OnDestroy, ElementRef } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,16 @@ export class FlipService implements OnDestroy {
   isRunning = true
   isCountdown = true
 
+  // Reference to the flip component
+  flipRef!: ElementRef
+
   ngOnDestroy(): void {
     clearInterval(this.timerId)
+  }
+
+  // Set component reference
+  setFlipReference(elementRef: ElementRef): void {
+    this.flipRef = elementRef
   }
 
   // timer controls
@@ -55,13 +63,18 @@ export class FlipService implements OnDestroy {
     this.process(this.counter)
   }
 
-  process(value: number): void {
-    const ul = this.flipRef.nativeElement as HTMLElement;
+  process(value: number): void {   
+    // Check if flipRef is set
+    if (!this.flipRef) {
+      return
+    }
+    
+    const ul = this.flipRef.nativeElement as HTMLElement
     const lis = ul.querySelectorAll('li')
 
     if (lis.length !== 2) return
 
-    lis.forEach(li => li.classList.remove('before', 'active'));
+    lis.forEach(li => li.classList.remove('before', 'active'))
 
     const curli = lis[this.curr]
     curli.classList.add('before')
