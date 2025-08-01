@@ -22,6 +22,6 @@ export class AppComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.flipService.startTimer()
+    // this.flipService.startTimer()
   }
 }
